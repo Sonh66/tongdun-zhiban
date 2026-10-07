@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#087f78" />
+  <title>童盾智伴 - 安全训练</title>
+  <link rel="icon" href="assets/tongtong.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>try { if (sessionStorage.getItem("tongdun-route")) document.documentElement.classList.add("route-arrival"); } catch {} setTimeout(() => document.documentElement.classList.remove("route-arrival"), 2200);</script>
+</head>
+<body>
+  <a class="skip-link" href="#trainingStage">跳到训练内容</a>
+  <div class="route-curtain" aria-hidden="true"><img src="assets/tongtong.png" alt="" /><span>童盾智伴</span></div>
+  <header class="app-header">
+    <a class="brand" href="index.html" aria-label="童盾智伴安全训练首页"><img class="brand-mark" src="assets/tongtong.png" alt="" /><div><h1>童盾智伴</h1><p>陪你练习，勇敢保护自己</p></div></a>
+    <nav class="mode-nav" aria-label="模式选择"><a href="index.html" class="is-current" aria-current="page"><i data-lucide="shield-check"></i><span>安全训练</span></a><a href="report.html" data-route><i data-lucide="chart-no-axes-combined"></i><span>家长报告</span></a></nav>
+    <button class="sound-toggle icon-button" type="button" id="soundToggle" aria-label="关闭语音播放" aria-pressed="false" title="关闭语音播放"><i data-lucide="volume-2"></i></button>
+  </header>
+  <main class="app-shell">
+    <aside class="side-panel">
+      <div class="side-heading"><i data-lucide="book-open"></i><h2>我的安全练习</h2><span>5 个场景</span></div>
+      <nav class="scenario-list" aria-label="安全场景列表" id="scenarioList"></nav>
+      <section class="profile-panel" aria-label="训练进度">
+        <div><span>今日完成</span><strong id="progressText">0 / 5</strong></div>
+        <div class="progress-track" role="progressbar" aria-label="训练完成进度" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"><span id="progressBar"></span></div>
+        <button class="mini-action" type="button" id="resetBtn"><i data-lucide="rotate-ccw"></i>一键重测</button>
+      </section>
+      <div class="side-note"><i data-lucide="heart-handshake"></i><p>你的身体属于你。<br />不舒服的时候，可以说“不”。</p></div>
+      <a class="parent-entry" href="report.html" id="openReportBtn" data-route><i data-lucide="clipboard-list"></i><div><strong>家长学习报告</strong><small id="reportSummary">完成练习后查看成长记录</small></div><i data-lucide="arrow-up-right"></i></a>
+    </aside>
+    <section class="training-stage" id="trainingStage" aria-label="剧情训练区" tabindex="-1">
+      <header class="topbar"><div><span class="eyebrow" id="sceneType">身体边界</span><h2 id="sceneTitle">熟人不当触碰场景</h2></div><div class="scene-controls"><span class="risk-pill" id="riskPill">熟人越界</span><button class="icon-button" type="button" id="speakSceneBtn" aria-label="朗读场景" title="朗读场景"><i data-lucide="volume-2"></i></button></div></header>
+      <div class="training-layout">
+        <div class="scenario-stage" id="scenarioStage">
+          <article class="scene-card">
+            <div class="scene-media"><img id="sceneImage" src="assets/scene-boundary.png" alt="身体边界安全教育绘本" fetchpriority="high" /></div>
+            <div class="scene-copy">
+              <div class="scene-caption"><span class="danger-tag" id="dangerTag">不舒服就拒绝</span><span class="scene-counter" id="sceneCounter">场景 01 / 05</span></div>
+              <p id="scenePrompt"></p>
+              <div class="dialogue-box" id="dialogueBox"><div class="dialogue-head"><span><i data-lucide="triangle-alert"></i><b id="dialogueRole">陌生人</b></span><button class="icon-button" type="button" id="playDialogueBtn" aria-label="播放人物台词" title="播放人物台词"><i data-lucide="audio-lines"></i></button></div><strong id="dialogueText"></strong></div>
+            </div>
+          </article>
+          <section class="response-panel" aria-label="回答与解析">
+            <div class="response-heading"><h3>现在，你会怎么做？</h3><i data-lucide="message-circle"></i></div>
+            <div class="answer-options" id="answerOptions"></div>
+            <div class="voice-row"><button class="record-button" type="button" id="recordBtn" aria-pressed="false"><i data-lucide="mic"></i><span id="recordLabel">说出你的决定</span><span class="voice-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></button><button class="secondary-button" type="button" id="analyzeBtn"><i data-lucide="sparkles"></i>解析回答</button></div>
+            <label class="answer-label" for="answerInput">我的回答</label>
+            <textarea id="answerInput" rows="2" placeholder="我会大声拒绝，离开这里，告诉爸爸妈妈或老师。"></textarea>
+            <div class="feedback" id="feedbackBox" role="status" aria-live="polite"><span class="feedback-state">等待回答</span><p>准备好了就说出你的决定吧。</p></div>
+            <div class="scene-footer"><span><i data-lucide="shield-check"></i>识别 · 拒绝 · 求助</span><button class="next-scene" type="button" id="nextSceneBtn">下一个场景<i data-lucide="arrow-right"></i></button></div>
+          </section>
+        </div>
+        <aside class="coach-panel">
+          <div class="coach"><div class="coach-heading"><img class="coach-avatar" src="assets/tongtong.png" alt="童童老师" /><div><h3>童童老师</h3><span><i></i>一直陪着你</span></div><button class="icon-button" type="button" id="speakCoachBtn" aria-label="听童童老师的建议" title="听童童老师的建议"><i data-lucide="volume-2"></i></button></div><p id="coachLine">先保护自己，再找可信任的大人。</p></div>
+          <section class="radar-card" aria-label="五维能力反馈"><div class="radar-title"><h3>我的保护力</h3><span>满分 100</span></div><canvas id="radarCanvas" width="420" height="340" role="img" aria-label="五维能力雷达图"></canvas><div class="radar-legend" id="radarLegend"></div></section>
+          <section class="traffic-light"><div class="traffic-heading"><h3>身体红绿灯</h3><div class="lights" aria-hidden="true"><i class="green"></i><i class="yellow"></i><i class="red"></i></div></div><p id="trafficText"></p><div class="safety-reminder"><i data-lucide="hand"></i><strong>不舒服，就亮红灯</strong></div></section>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script src="assets/vendor/ScrollTrigger.min.js"></script>
+  <script src="assets/vendor/lucide.min.js"></script>
+  <script src="motion.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

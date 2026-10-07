@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#087f78" />
+  <title>童盾智伴 - 家长学习报告</title>
+  <link rel="icon" href="assets/tongtong.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>try { if (sessionStorage.getItem("tongdun-route")) document.documentElement.classList.add("route-arrival"); } catch {} setTimeout(() => document.documentElement.classList.remove("route-arrival"), 2200);</script>
+</head>
+<body class="report-body">
+  <a class="skip-link" href="#reportMain">跳到学习报告</a>
+  <div class="route-curtain" aria-hidden="true"><img src="assets/tongtong.png" alt="" /><span>童盾智伴</span></div>
+  <header class="app-header">
+    <a class="brand" href="index.html" data-route><img class="brand-mark" src="assets/tongtong.png" alt="" /><div><h1>童盾智伴</h1><p>每一次练习，都是一点成长</p></div></a>
+    <nav class="mode-nav" aria-label="模式选择"><a href="index.html" data-route><i data-lucide="shield-check"></i><span>安全训练</span></a><a href="report.html" class="is-current" aria-current="page"><i data-lucide="chart-no-axes-combined"></i><span>家长报告</span></a></nav>
+    <button class="icon-button" type="button" id="printReportBtn" aria-label="打印学习报告" title="打印学习报告"><i data-lucide="printer"></i></button>
+  </header>
+  <main class="report-shell" id="reportMain" tabindex="-1">
+    <section class="report-page standalone-report" aria-label="家长学习报告">
+      <header class="report-hero"><div><span class="eyebrow">一起看见孩子的成长</span><h2>安全成长报告</h2><p id="reportOverviewText">正在生成孩子的训练表现。</p></div><div class="report-actions"><button class="mini-action" type="button" id="resetReportBtn"><i data-lucide="rotate-ccw"></i>一键重测</button><a class="secondary-button report-back" href="index.html" data-route><i data-lucide="arrow-left"></i>继续训练</a></div></header>
+      <section class="score-strip" aria-label="报告关键指标">
+        <article class="score-card" id="totalScoreCard"><div class="metric-label"><span>综合保护力</span><i data-lucide="shield-check"></i></div><strong id="reportScore">0</strong><small>满分 100 分</small></article>
+        <article class="score-card" id="completeCard"><div class="metric-label"><span>完成场景</span><i data-lucide="book-open-check"></i></div><strong id="completedCount">0/5</strong><small>已记录的安全练习</small></article>
+        <article class="score-card" id="strongCard"><div class="metric-label"><span>优势维度</span><i data-lucide="award"></i></div><strong id="strongestDimension">待生成</strong><small>值得鼓励与肯定</small></article>
+        <article class="score-card" id="weakCard"><div class="metric-label"><span>陪伴重点</span><i data-lucide="heart-handshake"></i></div><strong id="weakestDimension">待生成</strong><small>下一次一起练习</small></article>
+      </section>
+      <div class="report-grid">
+        <article class="report-card"><div class="report-card-head"><h3>五维能力画像</h3><span>综合表现</span></div><canvas id="reportRadarCanvas" width="460" height="360" role="img" aria-label="家长报告五维雷达图"></canvas></article>
+        <article class="report-card"><div class="report-card-head"><h3>保护力明细</h3><span>每项 100 分</span></div><div class="dimension-bars" id="reportDimensionBars"></div><p class="report-footnote">每一次明确的拒绝、离开与求助，都值得被看见。</p></article>
+        <article class="report-card report-wide"><div class="report-card-head"><h3>场景练习记录</h3><span>回答与反馈</span></div><div class="scenario-report-list" id="scenarioReports"></div></article>
+        <article class="report-card report-wide"><div class="report-card-head"><h3>把保护带回家</h3><i data-lucide="heart-handshake"></i></div><div class="family-actions" id="familyActions"></div></article>
+      </div>
+      <footer class="report-footer"><img src="assets/tongtong.png" alt="" /><p>慢慢练习，认真倾听。<br /><strong>让孩子知道，你会一直站在他身边。</strong></p></footer>
+    </section>
+  </main>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script src="assets/vendor/ScrollTrigger.min.js"></script>
+  <script src="assets/vendor/lucide.min.js"></script>
+  <script src="motion.js"></script>
+  <script src="report.js"></script>
+</body>
+</html>
